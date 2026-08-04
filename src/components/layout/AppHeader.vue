@@ -41,11 +41,13 @@ export default {
 <style scoped>
 .header {
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   height: 97px;
   margin-top: -1px;
   border: 1px solid hsla(0, 0%, 88%, 1);
   background: var(--color-surface);
+  overflow: hidden;
 }
 
 .header-inner {
@@ -55,6 +57,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-width: 0;
 }
 
 .search-container {
@@ -64,26 +67,34 @@ export default {
 }
 
 .search-input {
-  width: 200px;
+  width: 294px;
+  min-width: 0;
   padding: 10px 14px;
   border: 1px solid #c9c5bd;
   border-right: none;
   border-radius: 4px 0 0 4px;
   font-family: var(--font-serif);
+  font-weight: 400;
   font-size: 14px;
-  font-style: italic;
+  line-height: 150%;
+  letter-spacing: 0;
+  vertical-align: middle;
   background: var(--color-surface);
   color: var(--color-dark);
 }
 
 .search-input::placeholder {
-  color: #b3aca2;
-  font-style: italic;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0;
+  color: hsla(0, 0%, 63%, 1);
+  font-style: normal;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--color-dark);
 }
 
 .search-button {
@@ -103,6 +114,21 @@ export default {
   background: var(--color-btn-hover);
 }
 
+@media (max-width: 1100px) {
+  .header-inner {
+    padding-left: 40px;
+    gap: 10px;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .search-input {
+    width: 160px;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     height: auto;
@@ -116,6 +142,7 @@ export default {
   }
 
   .nav {
+    flex-wrap: wrap;
     justify-content: center;
   }
 
@@ -135,7 +162,7 @@ export default {
   }
 
   .nav {
-    gap: 16px;
+    gap: 12px;
   }
 }
 </style>
