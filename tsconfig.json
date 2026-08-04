@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ES2015",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": ["ES2015", "DOM"],
+    "types": ["node"],
+    "allowJs": true
+  },
+  "include": ["src/types/**/*", "src/data/**/*"],
+  "exclude": ["node_modules"]
+}
