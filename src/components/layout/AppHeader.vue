@@ -91,6 +91,8 @@ export default {
 
 .search-input:focus {
   outline: none;
+  border: 1px solid hsla(0, 0%, 71%, 1);
+  border-right: none;
 }
 
 .search-button {
