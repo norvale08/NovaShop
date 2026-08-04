@@ -60,6 +60,13 @@ export default {
   border: 1px solid hsla(0, 0%, 91%, 1);
   box-sizing: border-box;
   margin: 0 auto;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: hsla(0, 0%, 81%, 1);
 }
 
 .product-image {
@@ -76,6 +83,11 @@ export default {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
 }
 
 .product-body {
