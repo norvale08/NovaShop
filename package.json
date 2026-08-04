@@ -4,7 +4,7 @@
   "description": "E-commerce shop built with Vue 2 and TypeScript",
   "main": "index.js",
   "engines": {
-    "node": ">=16.0.0 <17.0.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "dev": "webpack serve --mode development --open",
