@@ -46,8 +46,6 @@ export default {
   padding-left: 140px;
 }
 
-/* Inherits gap: 36px from base .nav to match header */
-
 .footer-contacts {
   display: flex;
   align-items: center;
