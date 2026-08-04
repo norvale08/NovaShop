@@ -7,9 +7,9 @@
   --color-footer-bg: #ececea;
   --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
 
-  --color-btn-normal: #5c4a40;
-  --color-btn-hover: #6e5b50;
-  --color-btn-disabled-bg: #c9b9b3;
+  --color-btn-normal: hsla(12, 12%, 22%, 1);
+  --color-btn-hover: hsla(12, 9%, 43%, 1);
+  --color-btn-disabled-bg: hsla(12, 12%, 73%, 1);
   --color-btn-disabled-text: #e0d5d0;
-  --color-btn-cart: #2b2420;
+  --color-btn-cart: hsla(12, 29%, 28%, 1);
 }

@@ -50,11 +50,11 @@ export default {
 
 .header-inner {
   height: 100%;
-  padding-left: 190px;
+  padding-left: 140px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 12px;
 }
 
 .search-container {
@@ -64,7 +64,7 @@ export default {
 }
 
 .search-input {
-  width: 240px;
+  width: 200px;
   padding: 10px 14px;
   border: 1px solid #c9c5bd;
   border-right: none;
