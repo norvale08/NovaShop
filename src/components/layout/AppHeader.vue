@@ -12,6 +12,7 @@
         <input
           type="text"
           class="search-input"
+          :class="{ 'has-value': query.length > 0 }"
           placeholder="Поиск по названию картины"
           v-model="query"
           @input="onInput"
@@ -70,7 +71,7 @@ export default {
   width: 294px;
   min-width: 0;
   padding: 10px 14px;
-  border: 1px solid #c9c5bd;
+  border: 1px solid hsla(0, 0%, 88%, 1);
   border-right: none;
   border-radius: 4px 0 0 4px;
   font-family: var(--font-serif);
@@ -91,6 +92,10 @@ export default {
 
 .search-input:focus {
   outline: none;
+}
+
+.search-input:focus,
+.search-input.has-value {
   border: 1px solid hsla(0, 0%, 71%, 1);
   border-right: none;
 }
