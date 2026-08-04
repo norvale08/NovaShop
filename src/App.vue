@@ -121,7 +121,7 @@ export default {
 .main {
   flex: 1;
   padding: 32px 0 48px;
-   background: var(--color-surface);
+  background: var(--color-surface);
 }
 
 .page-title {

@@ -100,11 +100,6 @@ export default {
       currentIndex: 0
     };
   },
-  computed: {
-    currentImage() {
-      return this.product.images[this.currentIndex];
-    }
-  },
   methods: {
     formatPrice(price) {
       return price.toLocaleString('ru-RU');

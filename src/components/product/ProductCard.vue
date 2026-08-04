@@ -57,7 +57,6 @@ export default {
   min-height: 328px;
   display: flex;
   flex-direction: column;
-  opacity: 1;
   border: 1px solid hsla(0, 0%, 91%, 1);
   box-sizing: border-box;
   margin: 0 auto;
@@ -96,8 +95,6 @@ export default {
   font-size: 18px;
   font-weight: 400;
   line-height: 150%;
-  letter-spacing: 0;
-  vertical-align: middle;
   color: hsla(0, 4%, 20%, 1);
   margin: 0 0 2px 0;
   cursor: pointer;
@@ -112,8 +109,6 @@ export default {
   font-size: 18px;
   font-weight: 400;
   line-height: 150%;
-  letter-spacing: 0;
-  vertical-align: middle;
   color: hsla(0, 4%, 20%, 1);
   margin: 0 0 12px 0;
 }
@@ -157,7 +152,6 @@ export default {
   color: var(--color-muted);
   font-style: italic;
 }
-
 
 @media (max-width: 480px) {
   .product-name {

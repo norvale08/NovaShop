@@ -130,10 +130,6 @@ export default {
   color: #fff;
 }
 
-.buy-button:disabled {
-  cursor: not-allowed;
-}
-
 @media (max-width: 480px) {
   .buy-button {
     width: 96px;

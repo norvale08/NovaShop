@@ -77,8 +77,6 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  letter-spacing: 0;
-  vertical-align: middle;
   background: var(--color-surface);
   color: var(--color-dark);
 }
@@ -88,9 +86,7 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  letter-spacing: 0;
   color: hsla(0, 0%, 63%, 1);
-  font-style: normal;
 }
 
 .search-input:focus {
