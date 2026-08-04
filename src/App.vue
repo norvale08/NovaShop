@@ -21,6 +21,8 @@
       :product="selectedProduct"
       :is-open="isModalOpen"
       @close="closeModal"
+      @buy="handleBuy"
+      @remove-from-cart="handleRemoveFromCart"
     />
   </div>
 </template>
