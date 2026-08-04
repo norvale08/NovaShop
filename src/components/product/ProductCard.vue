@@ -73,13 +73,15 @@ export default {
 
 <style scoped>
 .product-card {
-  width: 280px;
-  height: 328px;
+  width: 100%;
+  max-width: 280px;
+  min-height: 328px;
   display: flex;
   flex-direction: column;
   opacity: 1;
   border: 1px solid hsla(0, 0%, 91%, 1);
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .product-image {
@@ -230,14 +232,6 @@ export default {
 
 .buy-button:disabled {
   cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-  .product-card {
-    width: 100%;
-    height: auto;
-    min-height: 328px;
-  }
 }
 
 @media (max-width: 480px) {
