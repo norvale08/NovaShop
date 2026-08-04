@@ -7,8 +7,9 @@ export const products = [
     oldPrice: 2000000,
     description: 'Одна из самых известных картин эпохи Возрождения. Изображает богиню Венеру, появляющуюся из моря на раковине.',
     images: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg'
+      require('../../public/imgs/1-1.jpg'),
+      require('../../public/imgs/1-2.jpg'),
+      require('../../public/imgs/1-3.jpg')
     ],
     inCart: false,
     buttonState: 'buy'
@@ -21,8 +22,9 @@ export const products = [
     oldPrice: null,
     description: 'Фреска, изображающая сцену последней трапезы Иисуса Христа с апостолами перед арестом и распятием.',
     images: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg/800px-%C3%9Altima_Cena_-_Da_Vinci_5.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg'
+      require('../../public/imgs/2-1.jpg'),
+      require('../../public/imgs/2-2.jpg'),
+      require('../../public/imgs/2-3.jpg')
     ],
     inCart: false,
     buttonState: 'buy'
@@ -35,8 +37,9 @@ export const products = [
     oldPrice: 6000000,
     description: 'Фрагмент фрески потолка Сикстинской капеллы, изображающий момент сотворения первого человека Богом.',
     images: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/800px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/2/24/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg'
+      require('../../public/imgs/3-1.jpg'),
+      require('../../public/imgs/3-2.jpg'),
+      require('../../public/imgs/3-3.jpg')
     ],
     inCart: true,
     buttonState: 'in-cart'
@@ -49,8 +52,9 @@ export const products = [
     oldPrice: null,
     description: 'Картина изображает публичное анатомирование, проводимое доктором Николасом Тульпом в присутствии членов гильдии хирургов.',
     images: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Rembrandt_-_The_Anatomy_Lesson_of_Dr_Nicolaes_Tulp.jpg/800px-Rembrandt_-_The_Anatomy_Lesson_of_Dr_Nicolaes_Tulp.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/2/2c/Rembrandt_-_The_Anatomy_Lesson_of_Dr_Nicolaes_Tulp.jpg'
+      require('../../public/imgs/4-1.jpg'),
+      require('../../public/imgs/4-2.jpg'),
+      require('../../public/imgs/4-3.jpg')
     ],
     inCart: false,
     buttonState: 'sold'
@@ -63,8 +67,9 @@ export const products = [
     oldPrice: null,
     description: 'Одна из самых узнаваемых картин в истории западной живописи, изображающая вид из окна психиатрической лечебницы перед восходом солнца.',
     images: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg'
+      require('../../public/imgs/5-1.jpg'),
+      require('../../public/imgs/5-2.jpg'),
+      require('../../public/imgs/5-3.jpg')
     ],
     inCart: false,
     buttonState: 'buy'
@@ -77,8 +82,9 @@ export const products = [
     oldPrice: null,
     description: 'Портрет девушки в экзотическом одеянии и с крупной жемчужной серьгой в ухе, часто называемый «голландской Моной Лизой».',
     images: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/800px-1665_Girl_with_a_Pearl_Earring.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/0/0f/1665_Girl_with_a_Pearl_Earring.jpg'
+      require('../../public/imgs/6-1.jpg'),
+      require('../../public/imgs/6-2.jpg'),
+      require('../../public/imgs/6-3.jpg'),
     ],
     inCart: false,
     buttonState: 'buy'

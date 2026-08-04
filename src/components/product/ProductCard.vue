@@ -125,8 +125,8 @@ export default {
 }
 
 .is-sold .product-image img {
-  filter: grayscale(1);
-  opacity: 0.7;
+  filter: brightness(0.7);
+  opacity: 0.6;
 }
 
 .product-name {

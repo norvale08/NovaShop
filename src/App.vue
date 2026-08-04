@@ -59,6 +59,7 @@ export default {
       };
     });
     this.filteredProducts = [...this.products];
+    console.log('Product IDs:', this.products.map(p => p.id));
   },
   methods: {
     handleSearch(query) {
@@ -75,20 +76,30 @@ export default {
       if (!product || product.buttonState !== 'buy') return;
 
       product.buttonState = 'processing';
+      console.log(`Adding product ${product.id} (${product.name}) to cart...`);
 
       setTimeout(() => {
         product.buttonState = 'in-cart';
         product.inCart = true;
         saveCartState(this.products);
+        console.log(`Added product ${product.id} (${product.name}) to cart`);
+        console.log('Cart product IDs:', this.products.filter(p => p.inCart).map(p => p.id));
       }, 2000);
     },
     handleRemoveFromCart(productId) {
       const product = this.products.find(p => p.id === productId);
       if (!product) return;
 
-      product.buttonState = 'buy';
-      product.inCart = false;
-      saveCartState(this.products);
+      product.buttonState = 'processing';
+      console.log(`Removing product ${product.id} (${product.name}) from cart...`);
+
+      setTimeout(() => {
+        product.buttonState = 'buy';
+        product.inCart = false;
+        saveCartState(this.products);
+        console.log(`Removed product ${product.id} (${product.name}) from cart`);
+        console.log('Cart product IDs:', this.products.filter(p => p.inCart).map(p => p.id));
+      }, 2000);
     },
     openModal(product) {
       this.selectedProduct = product;
