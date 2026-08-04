@@ -32,20 +32,21 @@ export default {
 .footer {
   background: var(--color-footer-bg);
   border-top: 1px solid #d8d5cf;
-  padding: 20px 0;
+  height: 96px;
+  padding: 0;
 }
 
 .footer-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
+  height: 100%;
+  padding-left: 140px;
 }
 
-.footer-nav {
-  gap: 24px;
-}
+/* Inherits gap: 36px from base .nav to match header */
 
 .footer-contacts {
   display: flex;
@@ -67,14 +68,31 @@ export default {
   flex-shrink: 0;
 }
 
+@media (max-width: 1100px) {
+  .footer-inner {
+    padding-left: 40px;
+  }
+}
+
 @media (max-width: 768px) {
+  .footer {
+    height: auto;
+    min-height: 96px;
+  }
+
   .footer-inner {
     flex-direction: column;
+    flex-wrap: wrap;
     text-align: center;
+    padding: 20px 24px;
   }
 }
 
 @media (max-width: 480px) {
+  .footer-inner {
+    padding: 16px;
+  }
+
   .footer-nav {
     gap: 12px;
   }

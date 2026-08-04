@@ -3,7 +3,7 @@
   --color-surface: #f4f3f0;
   --color-dark: #2b2420;
   --color-muted: #9a938a;
-  --color-footer-bg: #ececea;
+  --color-footer-bg: hsla(0, 7%, 92%, 1);
   --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
 
   --color-btn-normal: hsla(12, 12%, 22%, 1);
