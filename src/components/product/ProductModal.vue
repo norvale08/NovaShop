@@ -132,17 +132,17 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(43, 36, 32, 0.85);
-  backdrop-filter: blur(4px);
+  background: rgba(24, 20, 17, 0.78);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 20px;
-  animation: fadeIn 0.2s ease-out;
+  animation: overlayIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes fadeIn {
+@keyframes overlayIn {
   from {
     opacity: 0;
   }
@@ -160,18 +160,20 @@ export default {
   overflow-y: auto;
   position: relative;
   font-family: var(--font-serif, Georgia, serif);
-  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.35);
-  animation: slideUp 0.3s ease-out;
+  box-shadow:
+    0 32px 80px -20px rgba(0, 0, 0, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+  animation: modalEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes slideUp {
+@keyframes modalEnter {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: scale(0.96) translateY(24px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -188,7 +190,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 10;
   color: var(--color-dark, #2b2420);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
@@ -197,7 +199,7 @@ export default {
 .modal-close:hover {
   background: var(--color-dark, #2b2420);
   color: white;
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.05);
 }
 
 .modal-body {
@@ -240,7 +242,7 @@ export default {
 
 .slider-track {
   display: flex;
-  transition: transform 0.3s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   height: 100%;
 }
 
@@ -265,7 +267,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 5;
   color: var(--color-dark, #2b2420);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -273,8 +275,8 @@ export default {
 
 .slider-arrow:hover:not(:disabled) {
   background: white;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
 .slider-arrow:disabled {
@@ -304,14 +306,14 @@ export default {
   border-radius: 8px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   background: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .thumbnail:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 
 .thumbnail.active {
