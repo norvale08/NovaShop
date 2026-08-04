@@ -8,6 +8,7 @@
         <ProductGrid
           :products="filteredProducts"
           @buy="handleBuy"
+          @remove-from-cart="handleRemoveFromCart"
           @open-modal="openModal"
         />
       </div>
@@ -65,8 +66,7 @@ export default {
         this.filteredProducts = [...this.products];
       } else {
         this.filteredProducts = this.products.filter(p =>
-          p.name.toLowerCase().includes(query) ||
-          p.author.toLowerCase().includes(query)
+          p.name.toLowerCase().includes(query)
         );
       }
     },
@@ -81,6 +81,14 @@ export default {
         product.inCart = true;
         saveCartState(this.products);
       }, 2000);
+    },
+    handleRemoveFromCart(productId) {
+      const product = this.products.find(p => p.id === productId);
+      if (!product) return;
+
+      product.buttonState = 'buy';
+      product.inCart = false;
+      saveCartState(this.products);
     },
     openModal(product) {
       this.selectedProduct = product;

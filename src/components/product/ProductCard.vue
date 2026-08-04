@@ -19,11 +19,25 @@
           class="buy-button" 
           :class="buttonClass"
           @click="handleBuy"
-          :disabled="product.buttonState !== 'buy'"
         >
-          <span v-if="product.buttonState === 'processing'" class="button-icon spinner">⟳</span>
-          <span v-else-if="product.buttonState === 'in-cart'" class="button-icon">✓</span>
-          {{ buttonText }}
+          <span v-if="product.buttonState === 'buy'" class="button-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </span>
+          <span v-else-if="product.buttonState === 'processing'" class="button-icon spinner">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+            </svg>
+          </span>
+          <span v-else-if="product.buttonState === 'in-cart'" class="button-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+          <span class="button-text">{{ buttonText }}</span>
         </button>
       </div>
     </div>
@@ -61,8 +75,11 @@ export default {
       return price.toLocaleString('ru-RU');
     },
     handleBuy() {
-      if (this.product.buttonState !== 'buy') return;
-      this.$emit('buy', this.product.id);
+      if (this.product.buttonState === 'buy') {
+        this.$emit('buy', this.product.id);
+      } else if (this.product.buttonState === 'in-cart') {
+        this.$emit('remove-from-cart', this.product.id);
+      }
     },
     openModal() {
       this.$emit('open-modal', this.product);
@@ -182,22 +199,23 @@ export default {
 .buy-button {
   width: 118px;
   height: 48px;
-  padding: 0;
+  padding: 0 8px;
   border: none;
   border-radius: 3px;
   font-family: var(--font-serif);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
   white-space: nowrap;
   background: var(--color-btn-normal);
   color: #fff;
   box-sizing: border-box;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .btn-buy:hover:not(:disabled) {
@@ -205,11 +223,25 @@ export default {
 }
 
 .button-icon {
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.button-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.button-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .spinner {
-  display: inline-block;
   animation: spin 1s linear infinite;
 }
 

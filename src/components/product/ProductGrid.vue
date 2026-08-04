@@ -6,6 +6,7 @@
         :key="product.id"
         :product="product"
         @buy="$emit('buy', $event)"
+        @remove-from-cart="$emit('remove-from-cart', $event)"
         @open-modal="$emit('open-modal', $event)"
       />
     </div>
