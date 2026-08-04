@@ -3,27 +3,29 @@
     <div class="product-image" @click="openModal">
       <img :src="product.images[0]" :alt="product.name" />
     </div>
-    <h3 class="product-name" @click="openModal">{{ product.name }}</h3>
-    <p class="product-author">{{ product.author }}</p>
+    <div class="product-body">
+      <h3 class="product-name" @click="openModal">{{ product.name }}</h3>
+      <p class="product-author">{{ product.author }}</p>
 
-    <div v-if="product.buttonState === 'sold'" class="sold-row">
-      <span class="sold-label">Продана на аукционе</span>
-    </div>
-    <div v-else class="price-row">
-      <div class="price-block">
-        <span v-if="product.oldPrice" class="price-old">{{ formatPrice(product.oldPrice) }} $</span>
-        <span class="price-current">{{ formatPrice(product.price) }} $</span>
+      <div v-if="product.buttonState === 'sold'" class="sold-row">
+        <span class="sold-label">Продана на аукционе</span>
       </div>
-      <button 
-        class="buy-button" 
-        :class="buttonClass"
-        @click="handleBuy"
-        :disabled="product.buttonState !== 'buy'"
-      >
-        <span v-if="product.buttonState === 'processing'" class="button-icon spinner">⟳</span>
-        <span v-else-if="product.buttonState === 'in-cart'" class="button-icon">✓</span>
-        {{ buttonText }}
-      </button>
+      <div v-else class="price-row">
+        <div class="price-block">
+          <span v-if="product.oldPrice" class="price-old">{{ formatPrice(product.oldPrice) }} $</span>
+          <span class="price-current">{{ formatPrice(product.price) }} $</span>
+        </div>
+        <button 
+          class="buy-button" 
+          :class="buttonClass"
+          @click="handleBuy"
+          :disabled="product.buttonState !== 'buy'"
+        >
+          <span v-if="product.buttonState === 'processing'" class="button-icon spinner">⟳</span>
+          <span v-else-if="product.buttonState === 'in-cart'" class="button-icon">✓</span>
+          {{ buttonText }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -71,8 +73,13 @@ export default {
 
 <style scoped>
 .product-card {
+  width: 280px;
+  height: 328px;
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  border: 1px solid hsla(0, 0%, 91%, 1);
+  box-sizing: border-box;
 }
 
 .product-image {
@@ -82,7 +89,6 @@ export default {
   cursor: pointer;
   background: #d8d5cf;
   border-radius: 2px;
-  margin-bottom: 10px;
 }
 
 .product-image img {
@@ -92,6 +98,13 @@ export default {
   display: block;
 }
 
+.product-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px 16px;
+}
+
 .is-sold .product-image img {
   filter: grayscale(1);
   opacity: 0.7;
@@ -99,10 +112,12 @@ export default {
 
 .product-name {
   font-family: var(--font-serif);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 21px;
-  color: var(--color-dark);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: hsla(0, 4%, 20%, 1);
   margin: 0 0 2px 0;
   cursor: pointer;
 }
@@ -113,10 +128,12 @@ export default {
 
 .product-author {
   font-family: var(--font-serif);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 21px;
-  color: var(--color-dark);
+  line-height: 150%;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: hsla(0, 4%, 20%, 1);
   margin: 0 0 12px 0;
 }
 
@@ -161,7 +178,9 @@ export default {
 }
 
 .buy-button {
-  padding: 10px 16px;
+  width: 118px;
+  height: 48px;
+  padding: 0;
   border: none;
   border-radius: 3px;
   font-family: var(--font-serif);
@@ -175,6 +194,8 @@ export default {
   white-space: nowrap;
   background: var(--color-btn-normal);
   color: #fff;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .btn-buy:hover:not(:disabled) {
@@ -211,6 +232,14 @@ export default {
   cursor: not-allowed;
 }
 
+@media (max-width: 768px) {
+  .product-card {
+    width: 100%;
+    height: auto;
+    min-height: 328px;
+  }
+}
+
 @media (max-width: 480px) {
   .product-name {
     font-size: 13px;
@@ -230,7 +259,8 @@ export default {
   }
 
   .buy-button {
-    padding: 8px 10px;
+    width: 96px;
+    height: 40px;
     font-size: 11px;
   }
 }

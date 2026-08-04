@@ -100,6 +100,7 @@ export default {
 .main {
   flex: 1;
   padding: 32px 0 48px;
+   background: var(--color-surface);
 }
 
 .page-title {
@@ -107,7 +108,7 @@ export default {
   font-weight: 700;
   line-height: 36px;
   color: var(--color-dark);
-  margin: 0 0 24px 0;
+  margin: 0 0 36px 0;
 }
 
 @media (max-width: 480px) {
