@@ -44,8 +44,12 @@
       
       <div class="modal-info">
         <h2 class="modal-title">{{ product.name }}</h2>
+        <p class="modal-author">{{ product.author }}</p>
         <p class="modal-description">{{ product.description }}</p>
-        <p class="modal-price">{{ formatPrice(product.price) }} ₽</p>
+        <p class="modal-price">
+          <span v-if="product.oldPrice" class="modal-price-old">{{ formatPrice(product.oldPrice) }} $</span>
+          {{ formatPrice(product.price) }} $
+        </p>
       </div>
     </div>
   </div>
@@ -115,13 +119,14 @@ export default {
 }
 
 .modal-content {
-  background: white;
-  border-radius: 16px;
+  background: var(--color-surface, #f4f3f0);
+  border-radius: 6px;
   max-width: 600px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  font-family: var(--font-serif, Georgia, serif);
 }
 
 .modal-close {
@@ -150,8 +155,8 @@ export default {
   position: relative;
   width: 100%;
   height: 300px;
-  background: #f5f5f5;
-  border-radius: 16px 16px 0 0;
+  background: #d8d5cf;
+  border-radius: 6px 6px 0 0;
   overflow: hidden;
 }
 
@@ -237,24 +242,40 @@ export default {
 }
 
 .modal-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: #333;
-  margin: 0 0 12px 0;
+  color: var(--color-dark, #2b2420);
+  margin: 0 0 4px 0;
+}
+
+.modal-author {
+  font-size: 15px;
+  color: var(--color-dark, #2b2420);
+  margin: 0 0 16px 0;
 }
 
 .modal-description {
-  font-size: 16px;
-  color: #666;
+  font-size: 15px;
+  color: var(--color-muted, #6b6258);
   line-height: 1.6;
   margin: 0 0 16px 0;
 }
 
 .modal-price {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
-  color: #e63946;
+  color: var(--color-dark, #2b2420);
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-price-old {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-muted, #9a938a);
+  text-decoration: line-through;
 }
 
 @media (max-width: 480px) {

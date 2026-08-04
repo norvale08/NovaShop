@@ -1,0 +1,15 @@
+:root {
+  --color-bg: #e6e5e2;
+  --color-surface: #f4f3f0;
+  --color-border: #302c56;
+  --color-dark: #2b2420;
+  --color-muted: #9a938a;
+  --color-footer-bg: #ececea;
+  --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+
+  --color-btn-normal: #5c4a40;
+  --color-btn-hover: #6e5b50;
+  --color-btn-disabled-bg: #c9b9b3;
+  --color-btn-disabled-text: #e0d5d0;
+  --color-btn-cart: #2b2420;
+}

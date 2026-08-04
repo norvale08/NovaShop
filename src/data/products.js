@@ -1,78 +1,84 @@
 export const products = [
   {
     id: 1,
-    name: 'Банк Резерв 500',
-    price: 4500,
-    description: 'Надежный сейф-банк для хранения ценностей. Вместимость 500 литров, класс взломостойкости S1.',
+    name: '«Рождение Венеры»',
+    author: 'Сандро Боттичелли',
+    price: 1000000,
+    oldPrice: 2000000,
+    description: 'Одна из самых известных картин эпохи Возрождения. Изображает богиню Венеру, появляющуюся из моря на раковине.',
     images: [
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
+      'https://upload.wikimedia.org/wikipedia/commons/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg'
     ],
     inCart: false,
     buttonState: 'buy'
   },
   {
     id: 2,
-    name: 'Банк Пром 300',
-    price: 3200,
-    description: 'Компактный сейф-банк для домашнего использования. Вместимость 300 литров, огнестойкость 30 минут.',
+    name: '«Тайная вечеря»',
+    author: 'Леонардо да Винчи',
+    price: 3000000,
+    oldPrice: null,
+    description: 'Фреска, изображающая сцену последней трапезы Иисуса Христа с апостолами перед арестом и распятием.',
     images: [
-      'https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=400&fit=crop'
+      'https://upload.wikimedia.org/wikipedia/commons/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg/800px-%C3%9Altima_Cena_-_Da_Vinci_5.jpg'
     ],
     inCart: false,
     buttonState: 'buy'
   },
   {
     id: 3,
-    name: 'Банк Элит 1000',
-    price: 8900,
-    description: 'Премиальный сейф-банк максимальной защиты. Вместимость 1000 литров, класс взломостойкости S2.',
+    name: '«Сотворение Адама»',
+    author: 'Микеланджело',
+    price: 5000000,
+    oldPrice: 6000000,
+    description: 'Фрагмент фрески потолка Сикстинской капеллы, изображающий момент сотворения первого человека Богом.',
     images: [
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
+      'https://upload.wikimedia.org/wikipedia/commons/2/24/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/800px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg'
     ],
-    inCart: false,
-    buttonState: 'buy'
+    inCart: true,
+    buttonState: 'in-cart'
   },
   {
     id: 4,
-    name: 'Банк Мини 150',
-    price: 1800,
-    description: 'Миниатюрный сейф-банк для документов и мелких ценностей. Вместимость 150 литров.',
+    name: '«Урок анатомии»',
+    author: 'Рембрандт',
+    price: 4200000,
+    oldPrice: null,
+    description: 'Картина изображает публичное анатомирование, проводимое доктором Николасом Тульпом в присутствии членов гильдии хирургов.',
     images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=400&h=400&fit=crop'
+      'https://upload.wikimedia.org/wikipedia/commons/2/2c/Rembrandt_-_The_Anatomy_Lesson_of_Dr_Nicolaes_Tulp.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Rembrandt_-_The_Anatomy_Lesson_of_Dr_Nicolaes_Tulp.jpg/800px-Rembrandt_-_The_Anatomy_Lesson_of_Dr_Nicolaes_Tulp.jpg'
     ],
     inCart: false,
-    buttonState: 'buy'
+    buttonState: 'sold'
   },
   {
     id: 5,
-    name: 'Банк Офис 400',
-    price: 5600,
-    description: 'Офисный сейф-банк с электронным замком. Вместимость 400 литров, класс взломостойкости S1.',
+    name: '«Звёздная ночь»',
+    author: 'Винсент Ван Гог',
+    price: 3500000,
+    oldPrice: null,
+    description: 'Одна из самых узнаваемых картин в истории западной живописи, изображающая вид из окна психиатрической лечебницы перед восходом солнца.',
     images: [
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
+      'https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg'
     ],
     inCart: false,
     buttonState: 'buy'
   },
   {
     id: 6,
-    name: 'Банк Дом 250',
-    price: 2900,
-    description: 'Домашний сейф-банк оптимального размера. Вместимость 250 литров, огнестойкость 60 минут.',
+    name: '«Девушка с жемчужной серёжкой»',
+    author: 'Ян Вермеер',
+    price: 2800000,
+    oldPrice: null,
+    description: 'Портрет девушки в экзотическом одеянии и с крупной жемчужной серьгой в ухе, часто называемый «голландской Моной Лизой».',
     images: [
-      'https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop'
+      'https://upload.wikimedia.org/wikipedia/commons/0/0f/1665_Girl_with_a_Pearl_Earring.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/800px-1665_Girl_with_a_Pearl_Earring.jpg'
     ],
     inCart: false,
     buttonState: 'buy'

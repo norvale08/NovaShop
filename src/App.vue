@@ -1,40 +1,22 @@
 <template>
   <div class="app">
-    <header class="header">
-      <div class="container">
-        <h1 class="logo">Banki.shop</h1>
-        <div class="search-container">
-          <input 
-            type="text" 
-            class="search-input" 
-            placeholder="Поиск товаров..." 
-            v-model="searchQuery"
-            @input="handleSearch"
-          />
-          <span class="search-icon">🔍</span>
-        </div>
-      </div>
-    </header>
+    <AppHeader @search="handleSearch" />
 
     <main class="main">
       <div class="container">
-        <div class="products-grid">
-          <ProductCard 
-            v-for="product in filteredProducts" 
-            :key="product.id"
-            :product="product"
-            @buy="handleBuy"
-            @open-modal="openModal"
-          />
-        </div>
-        
-        <div v-if="filteredProducts.length === 0" class="no-results">
-          <p>Товары не найдены</p>
-        </div>
+        <h1 class="page-title">Картины эпохи Возрождения</h1>
+        <ProductGrid
+          :products="filteredProducts"
+          @buy="handleBuy"
+          @open-modal="openModal"
+        />
       </div>
     </main>
 
-    <ProductModal 
+    <AppFooter />
+
+    <ProductModal
+      v-if="selectedProduct"
       :product="selectedProduct"
       :is-open="isModalOpen"
       @close="closeModal"
@@ -43,68 +25,48 @@
 </template>
 
 <script>
-import ProductCard from './components/ProductCard.vue';
-import ProductModal from './components/ProductModal.vue';
+import AppHeader from './components/layout/AppHeader.vue';
+import AppFooter from './components/layout/AppFooter.vue';
+import ProductGrid from './components/product/ProductGrid.vue';
+import ProductModal from './components/product/ProductModal.vue';
 import { products } from './data/products.js';
+import { isInCart, saveCartState } from './utils/cartStorage.js';
 
 export default {
   name: 'App',
   components: {
-    ProductCard,
+    AppHeader,
+    AppFooter,
+    ProductGrid,
     ProductModal
   },
   data() {
     return {
       products: [],
-      searchQuery: '',
       filteredProducts: [],
       selectedProduct: null,
       isModalOpen: false
     };
   },
   created() {
-    this.loadCartState();
-    this.products = products.map(p => ({
-      ...p,
-      inCart: this.isProductInCart(p.id),
-      buttonState: this.isProductInCart(p.id) ? 'in-cart' : 'buy'
-    }));
+    this.products = products.map(p => {
+      const inCart = isInCart(p.id);
+      return {
+        ...p,
+        inCart,
+        buttonState: inCart ? 'in-cart' : (p.buttonState === 'sold' ? 'sold' : 'buy')
+      };
+    });
     this.filteredProducts = [...this.products];
   },
   methods: {
-    isProductInCart(productId) {
-      const cartState = localStorage.getItem('cartState');
-      if (cartState) {
-        const parsed = JSON.parse(cartState);
-        return parsed[productId] === true;
-      }
-      return false;
-    },
-    loadCartState() {
-      const cartState = localStorage.getItem('cartState');
-      if (cartState) {
-        const parsed = JSON.parse(cartState);
-        this.products = products.map(p => ({
-          ...p,
-          inCart: parsed[p.id] === true,
-          buttonState: parsed[p.id] === true ? 'in-cart' : 'buy'
-        }));
-      }
-    },
-    saveCartState() {
-      const cartState = {};
-      this.products.forEach(p => {
-        cartState[p.id] = p.inCart;
-      });
-      localStorage.setItem('cartState', JSON.stringify(cartState));
-    },
-    handleSearch() {
-      const query = this.searchQuery.toLowerCase().trim();
-      if (query === '') {
+    handleSearch(query) {
+      if (!query) {
         this.filteredProducts = [...this.products];
       } else {
-        this.filteredProducts = this.products.filter(p => 
-          p.name.toLowerCase().includes(query)
+        this.filteredProducts = this.products.filter(p =>
+          p.name.toLowerCase().includes(query) ||
+          p.author.toLowerCase().includes(query)
         );
       }
     },
@@ -117,7 +79,7 @@ export default {
       setTimeout(() => {
         product.buttonState = 'in-cart';
         product.inCart = true;
-        this.saveCartState();
+        saveCartState(this.products);
       }, 2000);
     },
     openModal(product) {
@@ -134,153 +96,27 @@ export default {
 };
 </script>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: #f8f9fa;
-  color: #333;
-}
-
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.header {
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding: 16px 0;
-}
-
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #e63946;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.search-container {
-  position: relative;
-  flex: 1;
-  max-width: 500px;
-}
-
-.search-input {
-  width: 100%;
-  padding: 12px 40px 12px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: border-color 0.2s;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #e63946;
-}
-
-.search-icon {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  pointer-events: none;
-}
-
+<style scoped>
 .main {
   flex: 1;
-  padding: 32px 0;
+  padding: 32px 0 48px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.no-results {
-  text-align: center;
-  padding: 60px 20px;
-  color: #999;
-  font-size: 18px;
-}
-
-@media (max-width: 768px) {
-  .header .container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .logo {
-    text-align: center;
-  }
-
-  .search-container {
-    max-width: 100%;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-  }
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--color-dark);
+  margin: 0 0 24px 0;
 }
 
 @media (max-width: 480px) {
-  .header {
-    padding: 12px 0;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .search-input {
-    padding: 10px 36px 10px 12px;
-    font-size: 13px;
+  .page-title {
+    font-size: 18px;
   }
 
   .main {
-    padding: 20px 0;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-  }
-
-  .container {
-    padding: 0 16px;
-  }
-}
-
-@media (max-width: 360px) {
-  .products-grid {
-    grid-template-columns: 1fr;
+    padding: 20px 0 32px;
   }
 }
 </style>
