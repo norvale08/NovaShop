@@ -55,7 +55,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap;
 }
 
 .search-container {
